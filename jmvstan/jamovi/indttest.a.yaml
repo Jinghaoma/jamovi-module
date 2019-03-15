@@ -1,0 +1,219 @@
+---
+name:  Indttest
+title: Bayesian Independent Samples T-Test
+menuGroup: Bayesian T-Tests
+version: '1.0.0'
+jas: '1.2'
+
+options:
+    - name: data
+      type: Data
+
+    - name: dep
+      title: Dependent Variable
+      type: Variable
+
+    - name: group
+      title: Grouping Variable
+      type: Variable
+#是否假设等分散，默认为否定
+    - name: varEq
+      title: Assume equal variances
+      type: Bool
+      default: FALSE
+
+# NUST设定
+    - name: iters
+      type: Integer
+      title: Number of iterations for each chain (including warm up)
+      min: 0
+      max: 100000000
+      default: 3500
+
+    - name: chain
+      type: Integer
+      title: Number of chains
+      min: 1
+      max: 100000000
+      default: 4
+
+    - name: warmup
+      type: Integer
+      title: Number of warmup (aka burnin) iterations per chain
+      min: 1
+      max: 100000000
+      default: 1000
+
+    - name: core
+      type: Integer
+      title: The number of cores to use when executing the Markov chains in parallel
+      min: 1
+      max: 100000000
+      default: 2
+
+    - name: seed
+      type: Integer
+      title: The seed for random number generation
+      min: 1
+      max: 100000000
+      default: 401
+
+# 結果
+
+    - name: CI
+      title: 'Confidence interval'
+      type: Bool
+      default: true
+    - name: Range.CI
+      type: Number
+      title: Range CI
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: HPDI
+      title: HDI(Highest Density Interval)
+      type: Bool
+      default: FALSE
+    - name: Range.HPDI
+      type: Number
+      title: Range HPDI
+      min: 0.001
+      max: 99.999
+      default: 95
+
+# 分布检查
+    - name: check_Rhat
+      title: check Rhat
+      type: Bool
+      default: FALSE
+    - name: check_ac
+      title: check autocorrelation
+      type: Bool
+      default: FALSE
+    - name: check_trace
+      title: traceplot
+      type: Bool
+      default: FALSE
+
+# 效应量
+    - name: mean_diff
+      title: Mean difference
+      type: Bool
+      default: FALSE
+    - name: mean_diff_Range
+      type: Number
+      title: "Mean difference CI & HPDI"
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: mean_diff_over
+      title: Mean difference over c
+      type: Bool
+      default: FALSE
+    - name: mean_diff_over_c
+      type: Number
+      title: "mu1-mu2>"
+      min: -100000000
+      max: 100000000
+      default: 0
+
+    - name: ES
+      title: "Effect size (Cohen's d)"
+      type: Bool
+      default: FALSE
+    - name: ES_Range
+      type: Number
+      title: "Effect size CI & HPDI"
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: ES_over
+      title: Effect size over
+      type: Bool
+      default: FALSE
+    - name: ES_over_c
+      type: Number
+      title: "Cohen's d>"
+      min: -100000000
+      max: 100000000
+      default: 0
+
+# 非重複度
+    - name: U3
+      title: Third measure of nonoverlap (Cohen'U3)
+      type: Bool
+      default: FALSE
+    - name: Range_U3
+      type: Number
+      title: "U3 CI & HDPI"
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: U3_over
+      title: U3 over c
+      type: Bool
+      default: FALSE
+    - name: U3_over_x
+      type: Number
+      title: "Cohen'U3>"
+      min: -100000000
+      max: 100000000
+      default: 0
+
+# 優越率
+    - name: pi_d
+      title: probability of dominance
+      type: Bool
+      default: FALSE
+    - name: Range_pi_d
+      type: Number
+      title: "probability of dominance CI & HDPI"
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: pi_d_over
+      title: "probability of dominance over c"
+      type: Bool
+      default: FALSE
+    - name: pi_d_over_x
+      type: Number
+      title: "probability of dominance>"
+      min: -100000000
+      max: 100000000
+      default: 0
+
+# 閾上率
+    - name: pi_c
+      title: "probability beyond threshold"
+      type: Bool
+      default: FALSE
+    - name: pi_c_c
+      type: Number
+      title: "c"
+      min: -100000000
+      max: 100000000
+      default: 0
+    - name: Range_pi_c
+      type: Number
+      title: "probability beyond threshold CI & HDPI"
+      min: 0.001
+      max: 99.999
+      default: 95
+
+    - name: pi_c_over
+      title: "probability beyond threshold over c"
+      type: Bool
+      default: FALSE
+    - name: pi_c_over_x
+      type: Number
+      title: "probability beyond threshold>"
+      min: -100000000
+      max: 100000000
+      default: 0
+
+...

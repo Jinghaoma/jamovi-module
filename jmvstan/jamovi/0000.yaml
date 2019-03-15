@@ -1,0 +1,19 @@
+---
+title: Bayesian analysis
+name: jmvstan
+version: 0.0.1
+jms: '1.0'
+authors:
+  - Jinghao Ma
+maintainer: 'Jonathon Love <https://github.com/Jinghaoma/jamovi-module>'
+date: '2019-03-15'
+type: R
+description: Bayesian analysis
+analyses:
+  - title: Bayesian Independent Samples T-Test
+    name: Indttest
+    ns: jmvstan
+    menuGroup: Bayesian T-Tests
+    menuTitle: Bayesian Independent Samples T-Test
+
+...
