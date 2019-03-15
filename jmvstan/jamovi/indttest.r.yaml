@@ -1,0 +1,208 @@
+---
+name:  Indttest
+title: Bayesian Independent Samples T-Test
+jrs:   '1.1'
+
+items:
+
+# 为了防止重新运行stan的扳机表，不可见
+    - name:  triggertable
+      title: P
+      type: Table
+      visible: FALSE
+      clearWith:
+        - dep
+        - group
+        - varEq
+        - iters
+        - chain
+        - warmup
+        - core
+        - seed
+      rows:  1
+      columns:
+        - name: M
+          type: number
+
+#主列表
+    - name:  maintable
+      title: Posterior distribution(Independent Samples T-Test)
+      type: Table
+      clearWith:
+        - dep
+        - group
+        - varEq
+        - iters
+        - chain
+        - warmup
+        - core
+        - seed
+        - Range.CI
+        - Range.HPDI
+        - varEq
+
+      rows:  4
+      columns:
+        - name: var
+          title: ''
+          type: text
+        - name: MAP
+          type: number
+        - name: EAP
+          type: number
+        - name: MED
+          type: number
+        - name: CI.Lower
+          title: CI.Lower
+          type: number
+          visible: (CI)
+        - name: CI.Upper
+          title: CI.Upper
+          type: number
+          visible: (CI)
+        - name: HPDI.Lower
+          title: HDI.Lower
+          type: number
+          visible: (HPDI)
+        - name: HPDI.Upper
+          title: HDI.Upper
+          type: number
+          visible: (HPDI)
+        - name: Rhat
+          type: number
+
+#后验分布检查图
+    - name: rhatplot
+      title: Rhat's Histogram
+      type: Image
+      width:  400
+      height: 300
+      renderFun: .plotrhat
+      visible: (check_Rhat)
+
+    - name: acplot
+      title: Avg autocorrelation
+      type: Image
+      width:  400
+      height: 300
+      renderFun: .plotac
+      visible: (check_ac)
+
+    - name: traceplot
+      title: Trace Plot
+      type: Image
+      width:  400
+      height: 300
+      renderFun: .plottrace
+      visible: (check_trace)
+
+# 效应量表
+    - name:  EStable
+      title: Effect size Posterior distribution
+      type: Table
+      rows:  0
+      visible: (mean_diff|ES)
+      columns:
+        - name: var
+          title: ''
+          type: text
+
+        - name: MAP
+          type: number
+        - name: EAP
+          type: number
+        - name: MED
+          type: number
+
+        - name: CI.Lower
+          title: CI.Lower
+          type: number
+        - name: CI.Upper
+          title: CI.Upper
+          type: number
+        - name: HPDI.Lower
+          title: HDI.Lower
+          type: number
+        - name: HPDI.Upper
+          title: HDI.Upper
+          type: number
+
+# 非重复度・優越率・閾上率
+    - name:  PDanalysis
+      title: Generated quantities analysis
+      type: Table
+      rows:  0
+      visible: (U3|pi_d|pi_c)
+      columns:
+        - name: var
+          title: ''
+          type: text
+
+        - name: MAP
+          type: number
+        - name: EAP
+          type: number
+        - name: MED
+          type: number
+
+        - name: CI.Lower
+          title: CI.Lower
+          type: number
+        - name: CI.Upper
+          title: CI.Upper
+          type: number
+        - name: HPDI.Lower
+          title: HDI.Lower
+          type: number
+        - name: HPDI.Upper
+          title: HDI.Upper
+          type: number
+
+
+# PHC表
+    - name:  PHCtable
+      title: "Probability research hypothesis is true"
+      type: Table
+      rows:  1
+      visible: (mean_diff_over|ES_over|U3_over|pi_d_over|pi_c_over)
+      columns:
+        - name: var
+          title: 'PHC'
+          type: text
+
+        - name: mean_diff_o
+          format: zto,pvalue
+          type: number
+          visible: (mean_diff_over)
+        - name: ES_o
+          format: zto,pvalue
+          type: number
+          visible: (ES_over)
+        - name: U3_o
+          format: zto,pvalue
+          type: number
+          visible: (U3_over)
+        - name: pi_d_o
+          format: zto,pvalue
+          type: number
+          visible: (pi_d_over)
+        - name: pi_c_o
+          format: zto,pvalue
+          type: number
+          visible: (pi_c_over)
+
+
+# fit的结果
+    - name:  text
+      title: Independent Samples T-Test
+      type:  Preformatted
+      clearWith:
+        - dep
+        - group
+        - varEq
+        - iters
+        - chain
+        - warmup
+        - core
+        - seed
+...

@@ -1,0 +1,216 @@
+title: Bayesian Independent Samples T-Test
+name: Indttest
+jus: '2.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: VariableSupplier
+    persistentItems: false
+    stretchFactor: 1
+    children:
+      - type: TargetLayoutBox
+        label: Dependent Variable
+        children:
+          - type: VariablesListBox
+            name: dep
+            maxItemCount: 1
+            isTarget: true
+      - type: TargetLayoutBox
+        label: Grouping Variable
+        children:
+          - type: VariablesListBox
+            name: group
+            maxItemCount: 1
+            isTarget: true
+
+
+  - type: LayoutBox
+    margin: large
+    children:
+      - type: CheckBox
+        name: varEq
+
+# stan 设定
+  - type: CollapseBox
+    label: NUTS Setting
+    collapsed: true
+    stretchFactor: 1
+    children:
+      - type: TextBox
+        name: iters
+        format: number
+        inputPattern: '[0-9]+'
+      - type: TextBox
+        name: chain
+        format: number
+        inputPattern: '[0-9]+'
+      - type: TextBox
+        name: warmup
+        format: number
+        inputPattern: '[0-9]+'
+      - type: TextBox
+        name: core
+        format: number
+        inputPattern: '[0-9]+'
+      - type: TextBox
+        name: seed
+        format: number
+        inputPattern: '[0-9]+'
+# 结果
+  - type: CollapseBox
+    label: result
+    collapsed: true
+    stretchFactor: 1
+    children:
+    # 区间
+      - type: CheckBox
+        name: CI
+        children:
+          - type: TextBox
+            name: Range.CI
+            label: Interval
+            suffix: '%'
+            format: number
+            inputPattern: '[0-9]+'
+            enable: (CI)
+      - type: CheckBox
+        name: HPDI
+        children:
+          - type: TextBox
+            name: Range.HPDI
+            label: Interval
+            suffix: '%'
+            format: number
+            inputPattern: '[0-9]+'
+            enable: (HPDI)
+    # 分布检查
+      - type: CollapseBox
+        label: convergence check
+        collapsed: true
+        stretchFactor: 1
+        children:
+          - type: CheckBox
+            name: check_Rhat
+          - type: CheckBox
+            name: check_ac
+          - type: CheckBox
+            name: check_trace
+    # 效应量
+      - type: CollapseBox
+        label: Effect size
+        collapsed: true
+        stretchFactor: 1
+        children:
+          - type: CheckBox
+            name: mean_diff
+            children:
+              - type: TextBox
+                name: mean_diff_Range
+                label: 'CI & HDI Interval'
+                suffix: '%'
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (mean_diff)
+
+          - type: CheckBox
+            name: mean_diff_over
+            children:
+              - type: TextBox
+                name: mean_diff_over_c
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (mean_diff_over)
+
+          - type: CheckBox
+            name: ES
+            children:
+              - type: TextBox
+                name: ES_Range
+                label: 'CI & HDI Interval'
+                suffix: '%'
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (ES)
+
+          - type: CheckBox
+            name: ES_over
+            children:
+              - type: TextBox
+                name: ES_over_c
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (ES_over)
+
+    # 非重複度・優越率
+      - type: CollapseBox
+        label: Posterior distribution analysis
+        collapsed: true
+        stretchFactor: 1
+        children:
+        # 非重複度
+          - type: CheckBox
+            name: U3
+            children:
+              - type: TextBox
+                name: Range_U3
+                label: 'CI & HDI Interval'
+                suffix: '%'
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (U3)
+
+          - type: CheckBox
+            name: U3_over
+            children:
+              - type: TextBox
+                name: U3_over_x
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (U3_over)
+        # 優越率
+          - type: CheckBox
+            name: pi_d
+            children:
+              - type: TextBox
+                name: Range_pi_d
+                label: 'CI & HDI Interval'
+                suffix: '%'
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (pi_d)
+
+          - type: CheckBox
+            name: pi_d_over
+            children:
+              - type: TextBox
+                name: pi_d_over_x
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (pi_d_over)
+        # 閾上率
+          - type: CheckBox
+            name: pi_c
+            children:
+              - type: TextBox
+                name: pi_c_c
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (pi_c)
+              - type: TextBox
+                name: Range_pi_c
+                label: 'CI & HDI Interval'
+                suffix: '%'
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (pi_c)
+
+          - type: CheckBox
+            name: pi_c_over
+            children:
+              - type: TextBox
+                name: pi_c_over_x
+                format: number
+                inputPattern: '[0-9]+'
+                enable: (pi_c_over)
+
+
