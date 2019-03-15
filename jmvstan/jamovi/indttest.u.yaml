@@ -39,23 +39,18 @@ children:
       - type: TextBox
         name: iters
         format: number
-        inputPattern: '[0-9]+'
       - type: TextBox
         name: chain
         format: number
-        inputPattern: '[0-9]+'
       - type: TextBox
         name: warmup
         format: number
-        inputPattern: '[0-9]+'
       - type: TextBox
         name: core
         format: number
-        inputPattern: '[0-9]+'
       - type: TextBox
         name: seed
         format: number
-        inputPattern: '[0-9]+'
 # 结果
   - type: CollapseBox
     label: result
@@ -71,7 +66,6 @@ children:
             label: Interval
             suffix: '%'
             format: number
-            inputPattern: '[0-9]+'
             enable: (CI)
       - type: CheckBox
         name: HPDI
@@ -81,7 +75,6 @@ children:
             label: Interval
             suffix: '%'
             format: number
-            inputPattern: '[0-9]+'
             enable: (HPDI)
     # 分布检查
       - type: CollapseBox
@@ -109,7 +102,6 @@ children:
                 label: 'CI & HDI Interval'
                 suffix: '%'
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (mean_diff)
 
           - type: CheckBox
@@ -118,7 +110,6 @@ children:
               - type: TextBox
                 name: mean_diff_over_c
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (mean_diff_over)
 
           - type: CheckBox
@@ -129,7 +120,6 @@ children:
                 label: 'CI & HDI Interval'
                 suffix: '%'
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (ES)
 
           - type: CheckBox
@@ -138,7 +128,6 @@ children:
               - type: TextBox
                 name: ES_over_c
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (ES_over)
 
     # 非重複度・優越率
@@ -156,7 +145,6 @@ children:
                 label: 'CI & HDI Interval'
                 suffix: '%'
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (U3)
 
           - type: CheckBox
@@ -165,7 +153,6 @@ children:
               - type: TextBox
                 name: U3_over_x
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (U3_over)
         # 優越率
           - type: CheckBox
@@ -176,7 +163,6 @@ children:
                 label: 'CI & HDI Interval'
                 suffix: '%'
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (pi_d)
 
           - type: CheckBox
@@ -185,7 +171,6 @@ children:
               - type: TextBox
                 name: pi_d_over_x
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (pi_d_over)
         # 閾上率
           - type: CheckBox
@@ -194,14 +179,12 @@ children:
               - type: TextBox
                 name: pi_c_c
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (pi_c)
               - type: TextBox
                 name: Range_pi_c
                 label: 'CI & HDI Interval'
                 suffix: '%'
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (pi_c)
 
           - type: CheckBox
@@ -210,7 +193,6 @@ children:
               - type: TextBox
                 name: pi_c_over_x
                 format: number
-                inputPattern: '[0-9]+'
                 enable: (pi_c_over)
 
 
